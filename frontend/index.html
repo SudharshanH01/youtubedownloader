@@ -1,1102 +1,190 @@
-
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="{{project.meta.ogDescription}}">
-      <meta name="theme-color" content="#ffffff">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="robots" content="{{project.meta.robotsMeta}}">
-      
-       <title>{{project.seoTitle}}</title>
-      <!-- SEO Description -->
-      <meta name="description" content="{{project.seoDescription}}">
-      <!-- Performance optimization: Preload critical resources -->
-      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" as="style">
-      
-      <!-- {headerScripts} -->
-
-      <!-- Core CSS -->
-      <script src="https://cdn.tailwindcss.com"></script>
-      <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-             colors: {
-                primary: {
-                  50: '#f8f8f8',
-                  100: '#e8e8e8',
-                  200: '#d3d3d3',
-                  300: '#a3a3a3',
-                  400: '#737373',
-                  500: '#525252',
-                  600: '#404040',
-                  700: '#262626',
-                  800: '#171717',
-                  900: '#0a0a0a',
-                  950: '#030303',
-                },
-                secondary: {
-                  50: '#f8f8f8',
-                  100: '#e8e8e8',
-                  200: '#d3d3d3',
-                  300: '#a3a3a3',
-                  400: '#737373',
-                  500: '#525252',
-                  600: '#404040',
-                  700: '#262626',
-                  800: '#171717',
-                  900: '#0a0a0a',
-                  950: '#030303',
-                },
-                accent: {
-                  50: '#f8f8f8',
-                  100: '#e8e8e8',
-                  200: '#d3d3d3',
-                  300: '#a3a3a3',
-                  400: '#737373',
-                  500: '#525252',
-                  600: '#404040',
-                  700: '#262626',
-                  800: '#171717',
-                  900: '#0a0a0a',
-                  950: '#030303',
-                },
-              },
-              fontFamily: {
-                sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-                heading: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
-              },
-              spacing: {
-                '18': '4.5rem',
-                '22': '5.5rem',
-                '30': '7.5rem',
-              },
-              maxWidth: {
-                '8xl': '88rem',
-                '9xl': '96rem',
-              },
-              animation: {
-                'fade-in': 'fadeIn 0.5s ease-in',
-                'fade-out': 'fadeOut 0.5s ease-out',
-                'slide-up': 'slideUp 0.5s ease-out',
-                'slide-down': 'slideDown 0.5s ease-out',
-                'slide-left': 'slideLeft 0.5s ease-out',
-                'slide-right': 'slideRight 0.5s ease-out',
-                'scale-in': 'scaleIn 0.5s ease-out',
-                'scale-out': 'scaleOut 0.5s ease-out',
-                'spin-slow': 'spin 3s linear infinite',
-                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                'bounce-slow': 'bounce 3s infinite',
-                'float': 'float 3s ease-in-out infinite',
-              },
-              keyframes: {
-                fadeIn: {
-                  '0%': { opacity: '0' },
-                  '100%': { opacity: '1' },
-                },
-                fadeOut: {
-                  '0%': { opacity: '1' },
-                  '100%': { opacity: '0' },
-                },
-                slideUp: {
-                  '0%': { transform: 'translateY(20px)', opacity: '0' },
-                  '100%': { transform: 'translateY(0)', opacity: '1' },
-                },
-                slideDown: {
-                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
-                  '100%': { transform: 'translateY(0)', opacity: '1' },
-                },
-                slideLeft: {
-                  '0%': { transform: 'translateX(20px)', opacity: '0' },
-                  '100%': { transform: 'translateX(0)', opacity: '1' },
-                },
-                slideRight: {
-                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
-                  '100%': { transform: 'translateX(0)', opacity: '1' },
-                },
-                scaleIn: {
-                  '0%': { transform: 'scale(0.9)', opacity: '0' },
-                  '100%': { transform: 'scale(1)', opacity: '1' },
-                },
-                scaleOut: {
-                  '0%': { transform: 'scale(1.1)', opacity: '0' },
-                  '100%': { transform: 'scale(1)', opacity: '1' },
-                },
-                float: {
-                  '0%, 100%': { transform: 'translateY(0)' },
-                  '50%': { transform: 'translateY(-10px)' },
-                },
-              },
-              aspectRatio: {
-                'portrait': '3/4',
-                'landscape': '4/3',
-                'ultrawide': '21/9',
-              },
-            },
-          },
-          variants: {
-            extend: {
-              opacity: ['disabled'],
-              cursor: ['disabled'],
-              backgroundColor: ['active', 'disabled'],
-              textColor: ['active', 'disabled'],
-            },
-          },
-        }
-      </script>
-
-      <!-- Utilities and Components -->
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
-      
-      <!-- Optimized Font Loading -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-      
-      <!-- Icons -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-      <!-- Dynamic Meta Tags -->
-      <meta name="description" content="{{project.meta.ogDescription}}">
-      <meta name="keywords" content="{{project.meta.keywords}}">
-      <meta name="robots" content="{{project.meta.robotsMeta}}">
-      <meta name="google-site-verification" content="{{project.meta.googleVerification}}">
-      <meta name="baidu-verification" content="{{project.meta.baiduVerification}}">
-      <meta name="yandex-verification" content="{{project.meta.yandexVerification}}">
-      <meta name="bing-verification" content="{{project.meta.bingVerification}}">
-      <meta property="og:title" content="{{project.meta.ogTitle}}">
-      <meta property="og:description" content="{{project.meta.ogDescription}}">
-      <meta property="og:image" content="{{project.meta.ogImage}}">
-      <meta property="og:type" content="website">
-      <meta property="og:locale" content="en_US">
-      <meta property="og:site_name" content="{{project.name}}">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="{{project.meta.ogTitle}}">
-      <meta name="twitter:description" content="{{project.meta.ogDescription}}">
-      <meta name="twitter:image" content="{{project.meta.ogImage}}">
-
-      <!-- Base Styles -->
-      <style>
-      * {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-/* Webkit browsers like Chrome, Safari, newer Edge */
-*::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
-}
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-          width: 0px;
-        }
-        
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          background: #888;
-          border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-          background: #666;
-        }
-
-        /* Remove tap highlight on mobile */
-        * {
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Improve text rendering */
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeDownload - YouTube Downloader</title>
+    <style>
         body {
-          text-rendering: optimizeLegibility;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 60px;
+            padding-bottom: 50px;
+            box-sizing: border-box;
         }
-
-        /* Focus outline styles */
-        :focus-visible {
-          outline: 2px solid currentColor;
-          outline-offset: 2px;
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
         }
-
-        /* Print styles */
-        @media print {
-          .no-print {
-            display: none !important;
-          }
-          
-          a[href]:after {
-            content: " (" attr(href) ")";
-          }
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
         }
-      </style>
-
-      <!-- Enhanced Image Handler -->
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                  const tempImage = new Image();
-                  tempImage.onload = () => {
-                    img.src = img.dataset.src;
-                    img.classList.remove('opacity-0');
-                    img.classList.add('opacity-100');
-                  };
-                  tempImage.src = img.dataset.src;
-                  img.removeAttribute('data-src');
-                  observer.unobserve(img);
-                }
-              }
-            });
-          }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
-          });
-
-          const loadImage = (img) => {
-            if ('loading' in HTMLImageElement.prototype) {
-              img.loading = 'lazy';
-            }
-            
-            img.classList.add('transition-opacity', 'duration-300', 'opacity-0');
-            
-            img.onerror = () => {
-              const width = img.getAttribute('width') || img.clientWidth || 300;
-              const height = img.getAttribute('height') || img.clientHeight || 200;
-              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
-              img.alt = 'Image unavailable';
-              img.classList.remove('opacity-0');
-              img.classList.add('opacity-100', 'error-image');
-            };
-
-            if (img.dataset.src) {
-              imageObserver.observe(img);
-            } else {
-              img.classList.remove('opacity-0');
-              img.classList.add('opacity-100');
-            }
-          };
-
-          document.querySelectorAll('img[data-src], img:not([data-src])').forEach(loadImage);
-
-          // Watch for dynamically added images
-          new MutationObserver((mutations) => {
-            mutations.forEach(mutation => {
-              mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1) {
-                  if (node.tagName === 'IMG') {
-                    loadImage(node);
-                  }
-                  node.querySelectorAll('img').forEach(loadImage);
-                }
-              });
-            });
-          }).observe(document.body, {
-            childList: true,
-            subtree: true
-          });
-        });
-
-        // Performance monitoring
-        if ('performance' in window && 'PerformanceObserver' in window) {
-          // Create performance observer
-          const observer = new PerformanceObserver((list) => {
-            const entries = list.getEntries();
-            entries.forEach((entry) => {
-              if (entry.entryType === 'largest-contentful-paint') {
-                // console.log(`LCP: ${entry.startTime}ms`);
-              }
-              if (entry.entryType === 'first-input') {
-                // console.log(`FID: ${entry.processingStart - entry.startTime}ms`);
-              }
-              if (entry.entryType === 'layout-shift') {
-                // console.log(`CLS: ${entry.value}`);
-              }
-            });
-          });
-
-          // Observe performance metrics
-          observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
-
-          // Log basic performance metrics
-          window.addEventListener('load', () => {
-            const timing = performance.getEntriesByType('navigation')[0];
-            console.log({
-              'DNS Lookup': timing.domainLookupEnd - timing.domainLookupStart,
-              'TCP Connection': timing.connectEnd - timing.connectStart,
-              'DOM Content Loaded': timing.domContentLoadedEventEnd - timing.navigationStart,
-              'Page Load': timing.loadEventEnd - timing.navigationStart
-            });
-          });
+        .social-icons {
+            display: flex;
+            gap: 10px;
         }
-
-        // Handle offline/online status
-        window.addEventListener('online', () => {
-          document.body.classList.remove('offline');
-          console.log('Connection restored');
-        });
-        
-        window.addEventListener('offline', () => {
-          document.body.classList.add('offline');
-          console.log('Connection lost');
-        });
-      </script>
-   </head>
-   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
-      <!-- Skip to main content link for accessibility -->
-      <a href="#main-content" 
-         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
-         Skip to main content
-      </a>
-
-      <!-- Header -->
-      <header class="relative z-50 bg-white dark:bg-gray-900">
-        <!-- Header content goes here -->
-      </header>
-
-      <!-- Main content area -->
-      <main id="main-content" class="flex-1 relative ">
-        <!-- Content will be injected here -->
-      </main>
-
-      <!-- {bodyScripts} -->
-
-   </body>
-</html><element id="2f57d383-f34c-4c61-95f3-bfbfeb1504c1" data-section-id="2f57d383-f34c-4c61-95f3-bfbfeb1504c1">
-
-<htmlCode>
-<div id="root">
-    <nav id="navbar" class="bg-neutral-900 fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-white font-bold text-xl">WeDownload</a>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-4">
-                        <a href="#hero" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Features</a>
-                        <a href="#downloader" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Download</a>
-                        <a href="#howToUse" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">How To Use</a>
-                        <a href="#faq" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-neutral-700 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#hero" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                    <a href="#features" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Features</a>
-                    <a href="#downloader" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Download</a>
-                    <a href="#howToUse" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">How To Use</a>
-                    <a href="#faq" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
-                </div>
-            </div>
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            color: black;
+            overflow: hidden;
+        }
+        input, select, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #thumbnail-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            max-height: 150px;
+            overflow: hidden;
+        }
+        #thumbnail-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        #progress {
+            font-size: 18px;
+            margin-top: 10px;
+            color: green;
+        }
+        .footer {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>WeDownload</h1>
+        <div class="social-icons">
+            <a href="#">&#x1F426;</a>
+            <a href="#">&#x1F4F1;</a>
+            <a href="#">&#x1F517;</a>
         </div>
-    </nav>
+    </div>
+
+    <div class="container">
+        <h2>YouTube Video Downloader</h2>
+        <input type="text" id="video-url" placeholder="Paste YouTube URL here..." oninput="fetchThumbnail()">
+        <div id="thumbnail-container"></div>
+        <select id="quality">
+            <option value="mp3">MP3 (Audio)</option>
+            <option value="720p" selected>720p</option>
+            <option value="1080p">1080p</option>
+        </select>
+        <button onclick="fetchVideo()">Download</button>
+        <div id="progress"></div>
+    </div>
+
+    <div class="footer">&copy; 2025 All Rights Reserved. Created by Sudharshan H</div>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+    async function fetchThumbnail() {
+        const url = document.getElementById('video-url').value;
+        if (!url) return;
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        try {
+            const response = await fetch('http://127.0.0.1:5000/thumbnail', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
             });
-        });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 0) {
-                navbar.classList.add('shadow-lg');
-            } else {
-                navbar.classList.remove('shadow-lg');
+            const data = await response.json();
+            if (data.thumbnail_url) {
+                document.getElementById('thumbnail-container').innerHTML = `<img src="${data.thumbnail_url}" alt="Thumbnail">`;
             }
-        });
-    </script>
-</div>
-</htmlCode></element><element id="47d79eb9-ef6f-41ab-b02d-6323b5034f27" data-section-id="47d79eb9-ef6f-41ab-b02d-6323b5034f27">
+        } catch (error) {
+            console.error("Error fetching thumbnail:", error);
+        }
+    }
 
-<htmlCode>
-<div id="root">
-    <section id="hero" class="bg-neutral-900 pt-20 min-h-[70vh] flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
-                    YouTube Video Downloader
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 animate__animated animate__fadeInUp">
-                    Download your favorite YouTube videos in MP3, 720p, or 1080p formats
-                </p>
-                <div class="space-y-4 animate__animated animate__fadeIn">
-                    <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="#downloader" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                            Start Downloading
-                        </a>
-                        <a href="#howToUse" class="bg-neutral-700 hover:bg-neutral-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
-                            How It Works
-                        </a>
-                    </div>
-                </div>
-                <div class="mt-12 flex justify-center items-center space-x-4 text-gray-400">
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>Free Download</span>
-                    </div>
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>100% Safe</span>
-                    </div>
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>User Friendly</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-</htmlCode></element><element id="ea0e2448-4920-4a5a-b4fa-294eda75141e" data-section-id="ea0e2448-4920-4a5a-b4fa-294eda75141e">
+    async function fetchVideo() {
+        const url = document.getElementById('video-url').value;
+        const quality = document.getElementById('quality').value;
 
-<htmlCode>
-<div id="root">
-    <section id="features" class="py-20 bg-neutral-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 animate__animated animate__fadeInUp">
-                    Powerful Features
-                </h2>
-                <p class="text-lg text-neutral-600 animate__animated animate__fadeInUp">
-                    Everything you need for seamless YouTube video downloads
-                </p>
-            </div>
+        if (!url) {
+            alert("Please enter a YouTube URL.");
+            return;
+        }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 animate__animated animate__fadeInUp">
-                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Multiple Formats</h3>
-                    <p class="text-neutral-600">Download videos in MP3, 720p, or 1080p quality formats</p>
-                </div>
+        document.getElementById('progress').textContent = "Downloading...";
 
-                <!-- Feature 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Fast Downloads</h3>
-                    <p class="text-neutral-600">Quick and efficient downloading process with no waiting time</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">100% Safe</h3>
-                    <p class="text-neutral-600">Secure downloads without any harmful software or viruses</p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 animate__animated animate__fadeInUp">
-                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">No Registration</h3>
-                    <p class="text-neutral-600">Start downloading immediately without any sign-up process</p>
-                </div>
-
-                <!-- Feature 5 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Preview Thumbnails</h3>
-                    <p class="text-neutral-600">View video thumbnails before downloading</p>
-                </div>
-
-                <!-- Feature 6 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Mobile Friendly</h3>
-                    <p class="text-neutral-600">Works perfectly on all devices and screen sizes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-</htmlCode></element><element id="d7ea7bc6-b3d9-4252-927e-8097235f91b0" data-section-id="d7ea7bc6-b3d9-4252-927e-8097235f91b0">
-
-<htmlCode>
-<div id="root">
-    <section id="downloader" class="py-20 bg-neutral-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate__animated animate__fadeInDown">
-                    Download Your Videos
-                </h2>
-                <p class="text-lg text-gray-300 animate__animated animate__fadeInUp">
-                    Simply paste your YouTube URL and choose your preferred format
-                </p>
-            </div>
-
-            <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-                <input type="text" id="videoUrl" placeholder="Paste YouTube video URL" 
-                    class="w-full mt-4 p-2 border rounded-md" oninput="fetchThumbnail()">
-                
-                <div class="text-center mt-4">
-                    <center><img id="thumbnail" class="hidden w-60 rounded-lg" alt="Video Thumbnail"></center>
-                </div>
-                
-                <select id="quality" class="w-full mt-4 p-2 border rounded-md">
-                    <option value="mp3">MP3</option>
-                    <option value="720p">720p</option>
-                    <option value="1080p">1080p</option>
-                </select>
-                
-                <button onclick="downloadVideo()" class="w-full mt-4 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">
-                    Download
-                </button>
-                
-                <p id="progress" class="mt-4 text-center text-sm text-gray-500"></p>
-            </div>
-            
-            <script>
-                async function fetchThumbnail() {
-                    const url = document.getElementById("videoUrl").value;
-                    if (!url) return;
-                    
-                    try {
-                        const response = await fetch("http://127.0.0.1:5000/thumbnail", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ url: url })
-                        });
-                        
-                        const data = await response.json();
-                        if (data.thumbnail_url) {
-                            document.getElementById("thumbnail").src = data.thumbnail_url;
-                            document.getElementById("thumbnail").classList.remove("hidden");
-                        }
-                    } catch (error) {
-                        console.error("Error fetching thumbnail:", error);
-                    }
-                }
-        
-                async function downloadVideo() {
-                    const url = document.getElementById("videoUrl").value;
-                    const quality = document.getElementById("quality").value;
-                    const progressText = document.getElementById("progress");
-        
-                    if (!url) {
-                        alert("Please enter a valid YouTube URL.");
-                        return;
-                    }
-        
-                    progressText.innerText = "Starting download...";
-        
-                    try {
-                        const response = await fetch("http://127.0.0.1:5000/downloads", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ url: url, quality: quality })
-                        });
-        
-                        if (!response.ok) {
-                            throw new Error("Failed to download video.");
-                        }
-        
-                        const blob = await response.blob();
-                        const downloadLink = document.createElement("a");
-                        downloadLink.href = URL.createObjectURL(blob);
-                        downloadLink.download = "video.mp4";
-                        downloadLink.click();
-                        
-                        progressText.innerText = "Download completed!";
-                    } catch (error) {
-                        console.error("Error downloading video:", error);
-                        progressText.innerText = "Download failed.";
-                    }
-                }
-            </script>
-
-            <!-- Additional Info -->
-            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div class="text-gray-300">
-                    <div class="flex items-center justify-center mb-2">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <p>No Registration Required</p>
-                </div>
-                <div class="text-gray-300">
-                    <div class="flex items-center justify-center mb-2">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <p>Multiple Format Options</p>
-                </div>
-                <div class="text-gray-300">
-                    <div class="flex items-center justify-center mb-2">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <p>100% Safe & Secure</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-</htmlCode></element><element id="7a5140f3-e4b9-4847-9e6d-4204a93f6cfc" data-section-id="7a5140f3-e4b9-4847-9e6d-4204a93f6cfc">
-
-<htmlCode>
-<div id="root">
-    <section id="howToUse" class="py-20 bg-neutral-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 animate__animated animate__fadeInUp">
-                    How To Download Videos
-                </h2>
-                <p class="text-lg text-neutral-600 animate__animated animate__fadeInUp">
-                    Follow these simple steps to download your favorite YouTube videos
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Step 1 -->
-                <div class="bg-white rounded-xl p-8 shadow-lg animate__animated animate__fadeInUp">
-                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                        <span class="text-2xl font-bold text-red-600">1</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Copy Video URL</h3>
-                    <p class="text-neutral-600">
-                        Go to YouTube and copy the URL of the video you want to download from the address bar
-                    </p>
-                    <div class="mt-6">
-                        <svg class="w-full h-auto text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="bg-white rounded-xl p-8 shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                        <span class="text-2xl font-bold text-red-600">2</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Paste URL</h3>
-                    <p class="text-neutral-600">
-                        Paste the copied URL into the input field on our downloader page
-                    </p>
-                    <div class="mt-6">
-                        <svg class="w-full h-auto text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="bg-white rounded-xl p-8 shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                        <span class="text-2xl font-bold text-red-600">3</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Download</h3>
-                    <p class="text-neutral-600">
-                        Select your preferred format and quality, then click the download button
-                    </p>
-                    <div class="mt-6">
-                        <svg class="w-full h-auto text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-16 text-center">
-                <div class="inline-block bg-neutral-200 rounded-lg p-6 animate__animated animate__fadeIn">
-                    <h4 class="text-lg font-semibold mb-2">Important Note</h4>
-                    <p class="text-neutral-600">
-                        Make sure to respect copyright laws and only download videos that you have permission to use.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-</htmlCode></element><element id="2ada46e3-226c-46fa-ac5f-0e43dc4ae8a2" data-section-id="2ada46e3-226c-46fa-ac5f-0e43dc4ae8a2">
-
-<htmlCode>
-<div id="root">
-    <section id="faq" class="py-20 bg-neutral-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate__animated animate__fadeInUp">
-                    Frequently Asked Questions
-                </h2>
-                <p class="text-lg text-gray-300 animate__animated animate__fadeInUp">
-                    Find answers to common questions about our YouTube video downloader
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- FAQ Item 1 -->
-                <div class="faq-item bg-neutral-800 rounded-lg transition-all duration-300 animate__animated animate__fadeInUp">
-                    <button class="faq-button w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
-                        <span class="text-white font-semibold">Is this service free to use?</span>
-                        <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4 text-gray-300">
-                        Yes, our YouTube video downloader is completely free to use. There are no hidden charges or subscription fees.
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="faq-item bg-neutral-800 rounded-lg transition-all duration-300 animate__animated animate__fadeInUp">
-                    <button class="faq-button w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
-                        <span class="text-white font-semibold">What video formats are supported?</span>
-                        <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4 text-gray-300">
-                        We support MP3 audio format, and video formats in 720p and 1080p quality. You can choose your preferred format before downloading.
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-item bg-neutral-800 rounded-lg transition-all duration-300 animate__animated animate__fadeInUp">
-                    <button class="faq-button w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
-                        <span class="text-white font-semibold">Is it legal to download YouTube videos?</span>
-                        <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4 text-gray-300">
-                        Downloading videos for personal use is generally acceptable. However, please ensure you have the right to download and respect copyright laws.
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="faq-item bg-neutral-800 rounded-lg transition-all duration-300 animate__animated animate__fadeInUp">
-                    <button class="faq-button w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
-                        <span class="text-white font-semibold">Are there any download limits?</span>
-                        <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4 text-gray-300">
-                        There are no strict limits on downloads. However, we recommend reasonable usage to ensure service availability for all users.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            // FAQ Toggle functionality
-            document.querySelectorAll('.faq-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    const faqItem = button.parentElement;
-                    const answer = button.nextElementSibling;
-                    const arrow = button.querySelector('svg');
-                    
-                    // Toggle answer visibility
-                    answer.classList.toggle('hidden');
-                    
-                    // Rotate arrow
-                    arrow.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-                    
-                    // Add hover effect to active item
-                    faqItem.classList.toggle('bg-neutral-700');
-                });
+        try {
+            const response = await fetch('http://127.0.0.1:5000/download', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url, quality })
             });
-        </script>
-    </section>
-</div>
-</htmlCode></element><element id="c38b621f-5c10-456c-be07-73d3369ff815" data-section-id="c38b621f-5c10-456c-be07-73d3369ff815">
 
-<htmlCode>
-<div id="root">
-    <section id="privacyPolicy" class="py-20 bg-neutral-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 animate__animated animate__fadeInUp">
-                    Privacy Policy
-                </h2>
-                <p class="text-lg text-neutral-600 animate__animated animate__fadeInUp">
-                    Your privacy is important to us
-                </p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8 animate__animated animate__fadeIn">
-                <div class="space-y-8">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-neutral-900">Information Collection</h3>
-                        <p class="text-neutral-600">
-                            We do not store any downloaded videos or personal information. The YouTube URLs you enter are only used to process your download request and are immediately discarded afterward.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-neutral-900">Usage Data</h3>
-                        <p class="text-neutral-600">
-                            We may collect anonymous usage statistics to improve our service quality. This includes:
-                        </p>
-                        <ul class="list-disc list-inside mt-2 text-neutral-600">
-                            <li>Download frequency</li>
-                            <li>Preferred video formats</li>
-                            <li>General usage patterns</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-neutral-900">Cookies</h3>
-                        <p class="text-neutral-600">
-                            We don't use cookies or tracking technologies to monitor your activity.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-neutral-900">Third-Party Services</h3>
-                        <p class="text-neutral-600">
-                            Our service interacts with YouTube to fetch video information. Please refer to YouTube's privacy policy for information about their data practices.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-neutral-900">Security</h3>
-                        <p class="text-neutral-600">
-                            We implement appropriate security measures to protect against unauthorized access, alteration, or destruction of data.
-                        </p>
-                    </div>
-
-                    <div class="border-t pt-8">
-                        <p class="text-sm text-neutral-500">
-                            Last updated: January 2024
-                        </p>
-                        <p class="text-sm text-neutral-500 mt-2">
-                            For any privacy-related questions, please contact us.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-</htmlCode></element><element id="514b2af6-1f19-40ac-867a-1e8807e9d843" data-section-id="514b2af6-1f19-40ac-867a-1e8807e9d843">
-
-<htmlCode>
-<div id="root">
-    <section id="termsOfService" class="py-20 bg-neutral-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate__animated animate__fadeInUp">
-                    Terms of Service
-                </h2>
-                <p class="text-lg text-gray-300 animate__animated animate__fadeInUp">
-                    Please read these terms carefully before using our service
-                </p>
-            </div>
-
-            <div class="bg-neutral-800 rounded-xl shadow-lg p-8 text-gray-300 animate__animated animate__fadeIn">
-                <div class="space-y-8">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">1. Acceptance of Terms</h3>
-                        <p>
-                            By accessing and using this YouTube Video Downloader, you accept and agree to be bound by the terms and provisions of this agreement.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">2. Service Usage</h3>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li>You may only use this service for personal, non-commercial purposes</li>
-                            <li>You agree not to misuse the service or help anyone else do so</li>
-                            <li>Automated or bulk downloading is strictly prohibited</li>
-                            <li>You must ensure you have the right to download any content</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">3. Intellectual Property</h3>
-                        <p>
-                            You agree to respect intellectual property rights and only download content where you have the legal right to do so. We are not responsible for any copyright infringement.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">4. Service Modifications</h3>
-                        <p>
-                            We reserve the right to modify or discontinue the service at any time without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">5. Limitation of Liability</h3>
-                        <p>
-                            The service is provided "as is" without any warranties. We are not responsible for any damages or losses resulting from your use of the service.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">6. Fair Usage</h3>
-                        <p>
-                            To ensure service availability for all users, we implement fair usage policies and may limit excessive downloading.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">7. Termination</h3>
-                        <p>
-                            We reserve the right to terminate or suspend access to our service immediately, without prior notice, for any violation of these terms.
-                        </p>
-                    </div>
-
-                    <div class="border-t border-neutral-700 pt-8">
-                        <p class="text-sm text-gray-400">
-                            Last updated: January 2024
-                        </p>
-                        <p class="text-sm text-gray-400 mt-2">
-                            By using our service, you acknowledge that you have read and understood these terms.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-</htmlCode></element><element id="1bcb3455-e4d5-4b46-b0a1-6e3ce47eee55" data-section-id="1bcb3455-e4d5-4b46-b0a1-6e3ce47eee55">
-
-<htmlCode>
-<div id="root">
-    <footer id="footer" class="bg-neutral-900 text-gray-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="py-12">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <!-- About -->
-                    <div class="col-span-1 md:col-span-2">
-                        <h3 class="text-xl font-bold text-white mb-4">YouTube Video Downloader</h3>
-                        <p class="text-gray-400 mb-4">
-                            A free tool to download YouTube videos in various formats and quality options.
-                        </p>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
-                            <li><a href="#howToUse" class="hover:text-white transition-colors">How To Use</a></li>
-                            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Legal -->
-                    <div>
-                        <h4 class="text-lg font-semibold text-white mb-4">Legal</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#privacyPolicy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                            <li><a href="#termsOfService" class="hover:text-white transition-colors">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-           
-            <div class="border-t border-neutral-800 py-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <center><p class="text-sm text-gray-400">&copy;2024 All rights reserved, created by Sudharshan H</p></center>
-               
-                    
-                    <!-- Social Links -->
-                    <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-</htmlCode></element>
-            <div id="page_complete">
-            <script>
-                console.log('Page complete');
-            </script>
-            </body>
-            </html>
-          
+            if (response.ok) {
+                const blob = await response.blob();
+                const downloadUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = 'video.' + (quality === 'mp3' ? 'mp3' : 'mp4');
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                document.getElementById('progress').textContent = "Download Complete!";
+            } else {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.error}`);
+            }
+        } catch (error) {
+            alert("An error occurred while downloading.");
+        }
+    }
+    </script>
+</body>
+</html>

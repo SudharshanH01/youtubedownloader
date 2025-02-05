@@ -12,6 +12,7 @@ CORS(app)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Define absolute downloads folder path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +21,7 @@ DOWNLOADS_FOLDER = os.path.join(BASE_DIR, 'downloads')
 # Create downloads folder if it doesn't exist
 if not os.path.exists(DOWNLOADS_FOLDER):
     os.makedirs(DOWNLOADS_FOLDER)
-    logging.info(f"Created downloads folder at: {DOWNLOADS_FOLDER}")
+    logger.info(f"Created downloads folder at: {DOWNLOADS_FOLDER}")
 
 # Quality options for downloads
 QUALITY_OPTIONS = {
@@ -37,39 +38,46 @@ def delayed_delete(file_path, delay=300):
         try:
             if os.path.exists(file_path):
                 os.remove(file_path)
-                logging.info(f"Deleted file after delay: {file_path}")
+                logger.info(f"Deleted file after delay: {file_path}")
             else:
-                logging.warning(f"File already deleted or not found: {file_path}")
+                logger.warning(f"File already deleted or not found: {file_path}")
         except Exception as e:
-            logging.error(f"Error deleting file: {e}")
+            logger.error(f"Error deleting file: {e}")
 
     threading.Thread(target=delete, daemon=True).start()
 
 # Route to serve the index.html file
 @app.route('/')
 def index():
-    return render_template('index.html')
+    try:
+        return render_template('index.html')
+    except Exception as e:
+        logger.error(f"Error rendering index.html: {e}")
+        return "Internal Server Error: Unable to load the page.", 500
 
 # Route to handle video downloads
-@app.route('/downloads', methods=['POST'])
+@app.route('/download', methods=['POST'])
 def download_video():
-    data = request.json
-    video_url = data.get('url')
-    quality = data.get('quality', '720p')
-
-    if not video_url:
-        return jsonify({'error': 'URL is required'}), 400
-
-    if quality not in QUALITY_OPTIONS:
-        return jsonify({'error': 'Invalid quality option'}), 400
-
     try:
+        data = request.json
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+
+        video_url = data.get('url')
+        quality = data.get('quality', '720p')
+
+        if not video_url:
+            return jsonify({'error': 'URL is required'}), 400
+
+        if quality not in QUALITY_OPTIONS:
+            return jsonify({'error': 'Invalid quality option'}), 400
+
         ydl_opts = {
             'format': QUALITY_OPTIONS[quality],
             'outtmpl': os.path.join(DOWNLOADS_FOLDER, '%(title)s-%(id)s.%(ext)s'),
             'quiet': True,
             'progress_hooks': [progress_hook],
-            'logger': logging.getLogger('yt-dlp')
+            'logger': logger
         }
 
         # Add postprocessor for MP3 conversion
@@ -91,10 +99,10 @@ def download_video():
                 downloaded_filename = os.path.splitext(downloaded_filename)[0] + '.mp3'
 
             if not os.path.exists(downloaded_filename):
-                logging.error(f"File not found in downloads folder: {downloaded_filename}")
+                logger.error(f"File not found in downloads folder: {downloaded_filename}")
                 return jsonify({'error': 'File not found'}), 404
 
-        logging.info(f"File found at: {downloaded_filename}")
+        logger.info(f"File found at: {downloaded_filename}")
 
         # Schedule the file for deletion after 5 minutes
         delayed_delete(downloaded_filename, delay=300)
@@ -106,25 +114,27 @@ def download_video():
         )
 
     except Exception as e:
-        logging.error(f"Download Error: {str(e)}")
+        logger.error(f"Download Error: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
 # Function to log download progress
 def progress_hook(d):
     """ Logs download progress to the console """
     if d['status'] == 'downloading':
-        logging.info(f"Download Progress: {d['_percent_str']}")
+        logger.info(f"Download Progress: {d['_percent_str']}")
 
 # Route to fetch video thumbnail
 @app.route('/thumbnail', methods=['POST'])
 def get_thumbnail():
-    data = request.json
-    video_url = data.get('url')
-
-    if not video_url:
-        return jsonify({'error': 'URL is required'}), 400
-
     try:
+        data = request.json
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+
+        video_url = data.get('url')
+        if not video_url:
+            return jsonify({'error': 'URL is required'}), 400
+
         ydl_opts = {'skip_download': True, 'quiet': True}
 
         with YoutubeDL(ydl_opts) as ydl:
@@ -137,8 +147,9 @@ def get_thumbnail():
         return jsonify({'thumbnail_url': thumbnail_url})
 
     except Exception as e:
+        logger.error(f"Thumbnail Error: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=False)  # Set debug=False for production
+    app.run(debug=True)  # Set debug=True for detailed error messages
