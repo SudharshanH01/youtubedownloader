@@ -7,7 +7,7 @@ import threading
 import time
 
 # Initialize Flask app
-app = Flask(__name__, template_folder='frontend')  # Set template_folder to 'frontend'
+app = Flask(__name__, template_folder='templates')  # Set template_folder to 'templates'
 CORS(app)
 
 # Configure logging
@@ -152,4 +152,5 @@ def get_thumbnail():
 
 # Run the app
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)  # Set debug=True for detailed error messages
+    port = int(os.environ.get('PORT', 5000))  # Use Render's port
+    app.run(host='0.0.0.0', port=port, debug=False)  # Disable debug mode for production
