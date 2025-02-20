@@ -5,102 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeDownload - YouTube Downloader</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            background-attachment: fixed;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding-top: 60px;
-            padding-bottom: 50px;
-            box-sizing: border-box;
-        }
-        .header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(0, 0, 0, 0.2);
-            position: fixed;
-            top: 0;
-            left: 0;
-            box-sizing: border-box;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
-        .social-icons {
-            display: flex;
-            gap: 10px;
-        }
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-        }
-        .container {
-            width: 90%;
-            max-width: 400px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            color: black;
-            overflow: hidden;
-        }
-        input, select, button {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            box-sizing: border-box;
-        }
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        #thumbnail-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            max-height: 150px;
-            overflow: hidden;
-        }
-        #thumbnail-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        #progress {
-            font-size: 18px;
-            margin-top: 10px;
-            color: green;
-        }
-        .footer {
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.2);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-        }
+        /* Your existing CSS styles */
     </style>
 </head>
 <body>
@@ -134,7 +39,7 @@
         if (!url) return;
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/thumbnail', {
+            const response = await fetch('/thumbnail', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url })
@@ -161,7 +66,7 @@
         document.getElementById('progress').textContent = "Downloading...";
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/download', {
+            const response = await fetch('/download', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url, quality })
