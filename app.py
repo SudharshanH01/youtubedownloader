@@ -152,4 +152,4 @@ def get_thumbnail():
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)  # Set debug=True for detailed error messages
+    app.run(host='0.0.0.0', debug=True)  # Set debug=True for detailed error messages
